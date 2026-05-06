@@ -8,20 +8,33 @@ import { HistoryTable } from "@/components/HistoryTable";
 
 function NetworkIcon() {
   return (
-    <svg
-      width="28"
-      height="28"
-      viewBox="0 0 24 24"
-      fill="none"
-      strokeWidth="1.5"
-      stroke="currentColor"
-      className="text-blue-400"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 0 1 1.06 0Z"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="28" height="28">
+      <defs>
+        <linearGradient id="navArcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#8b5cf6"/>
+          <stop offset="50%" stopColor="#3b82f6"/>
+          <stop offset="100%" stopColor="#06b6d4"/>
+        </linearGradient>
+      </defs>
+      {/* Speed arc */}
+      <path d="M 101 370 A 175 175 0 1 1 411 370"
+        fill="none" stroke="url(#navArcGrad)" strokeWidth="28"
+        strokeLinecap="round" opacity="0.9"/>
+      {/* Needle */}
+      <g transform="translate(256,270)">
+        <line x1="0" y1="0" x2="-110" y2="-130"
+          stroke="#06b6d4" strokeWidth="14" strokeLinecap="round"/>
+        <circle cx="-110" cy="-130" r="14" fill="#06b6d4"/>
+        <circle cx="0" cy="0" r="22" fill="#1e2a40" stroke="#3b82f6" strokeWidth="5"/>
+        <circle cx="0" cy="0" r="9" fill="#06b6d4"/>
+      </g>
+      {/* WiFi rings */}
+      <g transform="translate(256,348)" opacity="0.85">
+        <path d="M -52 0 A 52 52 0 0 1 52 0" fill="none" stroke="#3b82f6" strokeWidth="12" strokeLinecap="round"/>
+        <path d="M -33 0 A 33 33 0 0 1 33 0" fill="none" stroke="#06b6d4" strokeWidth="12" strokeLinecap="round"/>
+        <path d="M -15 0 A 15 15 0 0 1 15 0" fill="none" stroke="#06b6d4" strokeWidth="12" strokeLinecap="round"/>
+        <circle cx="0" cy="0" r="8" fill="#06b6d4"/>
+      </g>
     </svg>
   );
 }

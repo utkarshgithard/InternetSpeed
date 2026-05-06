@@ -128,11 +128,8 @@ export default function RootLayout({
         {/* Preconnect to Cloudflare speed test servers for faster first request */}
         <link rel="preconnect" href="https://speed.cloudflare.com" />
         <link rel="dns-prefetch" href="https://speed.cloudflare.com" />
-
-        {/* Favicon variants */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        {/* Favicon SVG for browsers that support it (supplements the PNG from icon.tsx) */}
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={`${inter.className} antialiased`}>
