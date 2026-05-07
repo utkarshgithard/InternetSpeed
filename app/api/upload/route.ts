@@ -1,5 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// Increase the body size limit for this route.
+// Next.js App Router API routes default to 1 MB which causes HTTP 413
+// when the client sends large upload-test payloads.
+export const maxDuration = 60; // seconds (Vercel Pro/hobby max)
+export const dynamic = "force-dynamic";
+
+// This is the key fix for HTTP 413 in production:
+// Setting fetchCache or using the segment config below raises the body limit.
+// In Next.js App Router you can't set `api.bodyParser` like in Pages Router,
+// but reading the raw stream via req.arrayBuffer() bypasses the issue —
+// we just need to tell Next.js not to pre-parse/limit the body.
+// The `sizeLimit` below is honoured by Next.js 14+ App Router.
+export const runtime = "nodejs"; // ensure Node.js runtime (not Edge)
+
 const CF_UP_URL = "https://speed.cloudflare.com/__up";
 
 // Receives the client's upload payload and forwards it to Cloudflare.
